@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         final List<String> calendarsAccountName = new ArrayList<>();
         for(Calendar c:calendars) {
-            calendarsAccountName.add("Owner of account" + "\n" + c.ownerAccount.toString());
+            calendarsAccountName.add("Calendar name - "+c.name+"\nOwner of account\n" + c.ownerAccount.toString()+"\n");
         mAdapter = new ArrayAdapter<>(this, R.layout.list_item, calendarsAccountName);
         mListView.setAdapter(mAdapter);
 

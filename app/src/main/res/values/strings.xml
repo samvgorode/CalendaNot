@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CalendaNot</string>
+    <string name="alarm_service_label">ALARM!</string>
+    <string name="button_reminders">Add reminders before 60 min and 5 min and photo 15 min after</string>
+    <string name="button_delete_event">delete event by id</string>
+    <string name="hint_delete_event">enter event id</string>
+
 </resources>

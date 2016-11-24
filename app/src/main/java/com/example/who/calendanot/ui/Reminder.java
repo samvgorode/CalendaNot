@@ -47,14 +47,14 @@ public class Reminder {
     }
 
     public static List<Reminder> getRemindersForQuery(final String query, final String[] queryArgs, final String sortOrder, final ContentResolver contentResolver) throws SecurityException {
-        final String[] attendeeProjection = new String[]{
+        final String[] reminderProjection = new String[]{
                 CalendarContract.Reminders._ID,
                 CalendarContract.Reminders.EVENT_ID,
                 CalendarContract.Reminders.MINUTES,
                 CalendarContract.Reminders.METHOD
         };
 
-        final Cursor cursor = contentResolver.query(CalendarContract.Reminders.CONTENT_URI, attendeeProjection, query, queryArgs, sortOrder);
+        final Cursor cursor = contentResolver.query(CalendarContract.Reminders.CONTENT_URI, reminderProjection, query, queryArgs, sortOrder);
         cursor.moveToFirst();
         final List<Reminder> reminders = new ArrayList<Reminder>();
         while (cursor.moveToNext()) {
