@@ -12,15 +12,16 @@
 
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
-    
-    tools:context="com.example.who.calendanot.ui.MainActivity">
+
+    tools:context="com.example.who.calendanot.ui.CalendarActivity">
 
     <Button
         android:text="@string/button_delete_event"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/delete_event_button"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        style="@android:style/Widget.Holo.Light.Button.Small" />
 
     <EditText
         android:layout_width="fill_parent"
@@ -29,7 +30,8 @@
         android:ems="16"
         android:layout_toLeftOf="@id/delete_event_button"
         android:id="@+id/input_id_event_delete"
-        android:hint="@string/hint_delete_event" />
+        android:hint="@string/hint_delete_event"
+        style="@android:style/Widget.Material.EditText" />
 
 
 

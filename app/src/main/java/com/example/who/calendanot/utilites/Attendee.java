@@ -1,4 +1,4 @@
-package com.example.who.calendanot.ui;
+package com.example.who.calendanot.utilites;
 
 import android.content.ContentResolver;
 import android.content.ContentUris;
@@ -30,7 +30,8 @@ public class Attendee {
         if (name != null) contentValues.put(CalendarContract.Attendees.ATTENDEE_NAME, name);
         if (email != null) contentValues.put(CalendarContract.Attendees.ATTENDEE_EMAIL, email);
         if (type != null) contentValues.put(CalendarContract.Attendees.ATTENDEE_TYPE, type);
-        if (relationship != null) contentValues.put(CalendarContract.Attendees.ATTENDEE_RELATIONSHIP, relationship);
+        if (relationship != null)
+            contentValues.put(CalendarContract.Attendees.ATTENDEE_RELATIONSHIP, relationship);
         if (status != null) contentValues.put(CalendarContract.Attendees.ATTENDEE_STATUS, status);
         return contentValues;
     }

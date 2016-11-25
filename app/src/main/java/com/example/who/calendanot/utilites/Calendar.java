@@ -1,4 +1,4 @@
-package com.example.who.calendanot.ui;
+package com.example.who.calendanot.utilites;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -32,16 +32,24 @@ public class Calendar {
     protected ContentValues mapToContentValues() {
         final ContentValues contentValues = new ContentValues();
         if (id != null) contentValues.put(CalendarContract.Calendars._ID, id);
-        if (accountName != null) contentValues.put(CalendarContract.Calendars.ACCOUNT_NAME, accountName);
-        if (accountType != null) contentValues.put(CalendarContract.Calendars.ACCOUNT_TYPE, accountType);
+        if (accountName != null)
+            contentValues.put(CalendarContract.Calendars.ACCOUNT_NAME, accountName);
+        if (accountType != null)
+            contentValues.put(CalendarContract.Calendars.ACCOUNT_TYPE, accountType);
         if (name != null) contentValues.put(CalendarContract.Calendars.NAME, name);
-        if (displayName != null) contentValues.put(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME, displayName);
+        if (displayName != null)
+            contentValues.put(CalendarContract.Calendars.CALENDAR_DISPLAY_NAME, displayName);
         if (color != null) contentValues.put(CalendarContract.Calendars.CALENDAR_COLOR, color);
-        if (accessLevel != null) contentValues.put(CalendarContract.Calendars.CALENDAR_ACCESS_LEVEL, accessLevel);
-        if (ownerAccount != null) contentValues.put(CalendarContract.Calendars.OWNER_ACCOUNT, ownerAccount);
-        if (syncEvents != null) contentValues.put(CalendarContract.Calendars.SYNC_EVENTS, syncEvents);
-        if (timeZone != null) contentValues.put(CalendarContract.Calendars.CALENDAR_TIME_ZONE, timeZone);
-        if (allowedReminders != null) contentValues.put(CalendarContract.Calendars.ALLOWED_REMINDERS, allowedReminders);
+        if (accessLevel != null)
+            contentValues.put(CalendarContract.Calendars.CALENDAR_ACCESS_LEVEL, accessLevel);
+        if (ownerAccount != null)
+            contentValues.put(CalendarContract.Calendars.OWNER_ACCOUNT, ownerAccount);
+        if (syncEvents != null)
+            contentValues.put(CalendarContract.Calendars.SYNC_EVENTS, syncEvents);
+        if (timeZone != null)
+            contentValues.put(CalendarContract.Calendars.CALENDAR_TIME_ZONE, timeZone);
+        if (allowedReminders != null)
+            contentValues.put(CalendarContract.Calendars.ALLOWED_REMINDERS, allowedReminders);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
             if (allowedAvailability != null)
                 contentValues.put(CalendarContract.Calendars.ALLOWED_AVAILABILITY, allowedAvailability);
@@ -114,8 +122,9 @@ public class Calendar {
         }
         cursor.close();
 
-        return calendars;}
-
-
+        return calendars;
     }
+
+
+}
 

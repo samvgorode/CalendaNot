@@ -1,4 +1,4 @@
-package com.example.who.calendanot.ui;
+package com.example.who.calendanot.utilites;
 
 
 import android.content.ContentResolver;
@@ -62,7 +62,8 @@ public class Event {
         if (organizer != null) contentValues.put(CalendarContract.Events.ORGANIZER, organizer);
         if (title != null) contentValues.put(CalendarContract.Events.TITLE, title);
         if (location != null) contentValues.put(CalendarContract.Events.EVENT_LOCATION, location);
-        if (description != null) contentValues.put(CalendarContract.Events.DESCRIPTION, description);
+        if (description != null)
+            contentValues.put(CalendarContract.Events.DESCRIPTION, description);
         if (color != null) contentValues.put(CalendarContract.Events.EVENT_COLOR, color);
         if (startDate != null) contentValues.put(CalendarContract.Events.DTSTART, startDate);
         if (endDate != null) contentValues.put(CalendarContract.Events.DTEND, endDate);
@@ -70,18 +71,25 @@ public class Event {
         contentValues.put(CalendarContract.Events.EVENT_END_TIMEZONE, endTimezone == null ? TimeZone.getDefault().getID() : endTimezone);
         if (duration != null) contentValues.put(CalendarContract.Events.DURATION, duration);
         if (allDay != null) contentValues.put(CalendarContract.Events.ALL_DAY, allDay);
-        if (recurrenceRule != null) contentValues.put(CalendarContract.Events.RRULE, recurrenceRule);
-        if (recurrenceDate != null) contentValues.put(CalendarContract.Events.RDATE, recurrenceDate);
+        if (recurrenceRule != null)
+            contentValues.put(CalendarContract.Events.RRULE, recurrenceRule);
+        if (recurrenceDate != null)
+            contentValues.put(CalendarContract.Events.RDATE, recurrenceDate);
         if (exceptionRule != null) contentValues.put(CalendarContract.Events.EXRULE, exceptionRule);
         if (exceptionDate != null) contentValues.put(CalendarContract.Events.EXDATE, exceptionDate);
         if (originalId != null) contentValues.put(CalendarContract.Events.ORIGINAL_ID, originalId);
-        if (originalSyncId != null) contentValues.put(CalendarContract.Events.ORIGINAL_SYNC_ID, originalSyncId);
+        if (originalSyncId != null)
+            contentValues.put(CalendarContract.Events.ORIGINAL_SYNC_ID, originalSyncId);
         if (originalInstanceTime != null)
             contentValues.put(CalendarContract.Events.ORIGINAL_INSTANCE_TIME, originalInstanceTime);
-        if (originalAllDay != null) contentValues.put(CalendarContract.Events.ORIGINAL_ALL_DAY, originalAllDay);
-        if (accessLevel != null) contentValues.put(CalendarContract.Events.ACCESS_LEVEL, accessLevel);
-        if (availability != null) contentValues.put(CalendarContract.Events.AVAILABILITY, availability);
-        if (guestsCanModify != null) contentValues.put(CalendarContract.Events.GUESTS_CAN_MODIFY, guestsCanModify);
+        if (originalAllDay != null)
+            contentValues.put(CalendarContract.Events.ORIGINAL_ALL_DAY, originalAllDay);
+        if (accessLevel != null)
+            contentValues.put(CalendarContract.Events.ACCESS_LEVEL, accessLevel);
+        if (availability != null)
+            contentValues.put(CalendarContract.Events.AVAILABILITY, availability);
+        if (guestsCanModify != null)
+            contentValues.put(CalendarContract.Events.GUESTS_CAN_MODIFY, guestsCanModify);
         if (guestsCanInviteOthers != null)
             contentValues.put(CalendarContract.Events.GUESTS_CAN_INVITE_OTHERS, guestsCanInviteOthers);
         if (guestsCanSeeGuests != null)
@@ -89,13 +97,15 @@ public class Event {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             if (customAppPackage != null)
                 contentValues.put(CalendarContract.Events.CUSTOM_APP_PACKAGE, customAppPackage);
-            if (customAppUri != null) contentValues.put(CalendarContract.Events.CUSTOM_APP_URI, customAppUri);
+            if (customAppUri != null)
+                contentValues.put(CalendarContract.Events.CUSTOM_APP_URI, customAppUri);
             if (uID2445 != null) contentValues.put(CalendarContract.Events.UID_2445, uID2445);
         }
         if (selfAttendeeStatus != null)
             contentValues.put(CalendarContract.Events.SELF_ATTENDEE_STATUS, selfAttendeeStatus);
         if (hasAlarm != null) contentValues.put(CalendarContract.Events.HAS_ALARM, hasAlarm);
-        if (hasAttendeeData != null) contentValues.put(CalendarContract.Events.HAS_ATTENDEE_DATA, hasAttendeeData);
+        if (hasAttendeeData != null)
+            contentValues.put(CalendarContract.Events.HAS_ATTENDEE_DATA, hasAttendeeData);
         if (hasExtendedProperties != null)
             contentValues.put(CalendarContract.Events.HAS_EXTENDED_PROPERTIES, hasExtendedProperties);
         contentValues.put(CalendarContract.Events.EVENT_TIMEZONE, eventTimezone == null ? TimeZone.getDefault().getID() : eventTimezone);
@@ -111,7 +121,7 @@ public class Event {
         calendarId = calendar.id;
     }
 
-    public static List<Event> getEventsForQuery(final String query, final String[] queryArgs, final String sortOrder, final ContentResolver contentResolver)throws SecurityException {
+    public static List<Event> getEventsForQuery(final String query, final String[] queryArgs, final String sortOrder, final ContentResolver contentResolver) throws SecurityException {
         final String[] eventProjection = new String[]{
                 CalendarContract.Events._ID,
                 CalendarContract.Events.CALENDAR_ID,

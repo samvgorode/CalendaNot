@@ -1,4 +1,4 @@
-package com.example.who.calendanot.ui;
+package com.example.who.calendanot.utilites;
 
 import android.content.ContentResolver;
 import android.content.ContentUris;

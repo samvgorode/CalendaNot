@@ -4,5 +4,12 @@
     <string name="button_reminders">Add reminders before 60 min and 5 min and photo 15 min after</string>
     <string name="button_delete_event">delete event by id</string>
     <string name="hint_delete_event">enter event id</string>
+    <string name="hint_enter_event_before">min before event</string>
+    <string name="button_before_event">add min before</string>
+    <string name="hint_enter_event_after_cam">min after event</string>
+    <string name="button_after_event_cam">add min after to photo</string>
+    <string name="hint_enter_event_after_scan">add min after to scan</string>
+    <string name="hint_enter_event_after_fill_form">add min after to fill form</string>
+
 
 </resources>

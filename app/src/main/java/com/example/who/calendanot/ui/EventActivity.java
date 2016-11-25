@@ -15,8 +15,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.who.calendanot.R;
+import com.example.who.calendanot.utilites.Event;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -47,21 +49,29 @@ public class EventActivity extends AppCompatActivity {
 
         final List<Event> events = mEvent.getEventsForQuery(null, null, null, getContentResolver());
         final List<Integer> eventsAccountId = new ArrayList<>();
-        for(Event e:events) {
-            eventsAccountId.add(e.id);}
+        for (Event e : events) {
+            if (e.calendarId == getIntent().getExtras().getInt("CalendarId")) {
+                eventsAccountId.add(e.id);
+            }
+        }
         final ArrayAdapter<Integer> arrayAdapter = new ArrayAdapter<>(this, R.layout.list_item, eventsAccountId);
 
         final List<String> eventsTitle = new ArrayList<>();
-        int idCalendar = getIntent().getExtras().getInt("CalendarId");
         for (Event e : events) {
-            if (e.calendarId == idCalendar) {
+            if (e.calendarId == getIntent().getExtras().getInt("CalendarId")) {
 
                 String x = e.startDate;
+                String y = e.endDate;
                 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                long milliSeconds= Long.parseLong(x);
-                java.util.Calendar calendar1 = java.util.Calendar.getInstance();
-                calendar1.setTimeInMillis(milliSeconds);
-                eventsTitle.add("ID= "+e.id+"\nTitle - "+e.title+"\n"+"Date - "+formatter.format(calendar1.getTime())+"\n");
+                DateFormat formatter1 = new SimpleDateFormat("h:mm:ss a");
+                long milliSecondsStart = Long.parseLong(x);
+                long milliSecondsFinish = Long.parseLong(y);
+                java.util.Calendar calendarStart = java.util.Calendar.getInstance();
+                calendarStart.setTimeInMillis(milliSecondsStart);
+                java.util.Calendar calendarFinish = java.util.Calendar.getInstance();
+                calendarFinish.setTimeInMillis(milliSecondsFinish);
+
+                eventsTitle.add("ID= " + e.id + "\nTitle - " + e.title + "\n" + "Date - " + formatter.format(calendarStart.getTime()) + "\nTime Start - " + formatter1.format(calendarStart.getTime())+"\nTime Finish - " + formatter1.format(calendarFinish.getTime()));
             }
         }
         final ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<>(this, R.layout.list_item, eventsTitle);
@@ -79,7 +89,7 @@ public class EventActivity extends AppCompatActivity {
 
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)  {
+            public void onClick(View v) {
 
                 long idd = Long.parseLong(mEdittext.getText().toString());
                 Log.d(TAG, "onClick: " + idd);
@@ -88,14 +98,13 @@ public class EventActivity extends AppCompatActivity {
                 Uri deleteUri = null;
                 deleteUri = ContentUris.withAppendedId(CalendarContract.Events.CONTENT_URI, idd);
                 int rows = getContentResolver().delete(deleteUri, null, null);
-                Log.d(TAG, "Rows deleted: " + rows +"  "+ idd);
+                Log.d(TAG, "Rows deleted: " + rows + "  " + idd);
+                Toast.makeText(getApplicationContext(), "DELETED EVENT ID= \n" + idd + "\nSYNC YOUR CALENDAR",
+                        Toast.LENGTH_LONG).show();
 
             }
         });
     }
-
-
-
 
 
 }
