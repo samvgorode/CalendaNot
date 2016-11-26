@@ -80,6 +80,7 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:ems="10"
+        android:text=""
         android:id="@+id/coordinates"
         android:hint="@string/question_input_hint7"
         android:textAppearance="@android:style/TextAppearance.Material.Body1"/>

@@ -24,21 +24,20 @@ import retrofit2.Retrofit;
 
 public class SheetForm extends AppCompatActivity {
 
-private EditText mEditTextCompany;
-private EditText mEditTextName_Surname;
-private EditText mEditTextPosition;
-private EditText mEditTextTelephone;
-private EditText mEditTextEmail;
-private EditText mEditTextTheNameOfTheCafe;
-private EditText mEditTextCoordinates;
-private EditText mEditTextTheme;
-private EditText mEditTextDetails;
-private Button mButtonSubmit;
-
+    private EditText mEditTextCompany;
+    private EditText mEditTextName_Surname;
+    private EditText mEditTextPosition;
+    private EditText mEditTextTelephone;
+    private EditText mEditTextEmail;
+    private EditText mEditTextTheNameOfTheCafe;
+    private EditText mEditTextCoordinates;
+    private EditText mEditTextTheme;
+    private EditText mEditTextDetails;
+    private Button mButtonSubmit;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) throws SecurityException {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.questions_activity);
         mEditTextCompany = (EditText) findViewById(R.id.company);
@@ -52,12 +51,11 @@ private Button mButtonSubmit;
         mEditTextDetails = (EditText) findViewById(R.id.details);
         mButtonSubmit = (Button) findViewById(R.id.my_submit_button);
 
-
         mButtonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Make sure all the fields are filled with values
-                if(TextUtils.isEmpty(mEditTextCompany.getText().toString()) ||
+                if (TextUtils.isEmpty(mEditTextCompany.getText().toString()) ||
                         TextUtils.isEmpty(mEditTextName_Surname.getText().toString()) ||
                         TextUtils.isEmpty(mEditTextPosition.getText().toString()) ||
                         TextUtils.isEmpty(mEditTextTelephone.getText().toString()) ||
@@ -65,21 +63,18 @@ private Button mButtonSubmit;
                         TextUtils.isEmpty(mEditTextTheNameOfTheCafe.getText().toString()) ||
                         TextUtils.isEmpty(mEditTextCoordinates.getText().toString()) ||
                         TextUtils.isEmpty(mEditTextTheme.getText().toString()) ||
-                        TextUtils.isEmpty(mEditTextDetails.getText().toString()))
-                {
-                    Toast.makeText(getApplicationContext(),"Field can't be empty.",Toast.LENGTH_LONG).show();
+                        TextUtils.isEmpty(mEditTextDetails.getText().toString())) {
+                    Toast.makeText(getApplicationContext(), "Field can't be empty.", Toast.LENGTH_LONG).show();
                     return;
                 }
                 //Check if a valid email is entered
-                if(!android.util.Patterns.EMAIL_ADDRESS.matcher(mEditTextEmail.getText().toString()).matches())
-                {
-                    Toast.makeText(getApplicationContext(),"Please enter a valid email.",Toast.LENGTH_LONG).show();
+                if (!android.util.Patterns.EMAIL_ADDRESS.matcher(mEditTextEmail.getText().toString()).matches()) {
+                    Toast.makeText(getApplicationContext(), "Please enter a valid email.", Toast.LENGTH_LONG).show();
                     return;
                 }
                 //Check if a valid phone number is entered
-                if(!Patterns.PHONE.matcher(mEditTextTelephone.getText().toString()).matches())
-                {
-                    Toast.makeText(getApplicationContext(),"Please enter a valid email.",Toast.LENGTH_LONG).show();
+                if (!Patterns.PHONE.matcher(mEditTextTelephone.getText().toString()).matches()) {
+                    Toast.makeText(getApplicationContext(), "Please enter a valid email.", Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -91,51 +86,55 @@ private Button mButtonSubmit;
         });
     }
 
+
     private void sendDataToGoogleSheets() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://docs.google.com/forms/d/")
                 .build();
-                String companyInput =     mEditTextCompany.getText().toString();
-                String nameSurnameInput = mEditTextName_Surname.getText().toString();
-                String positionInput =    mEditTextPosition.getText().toString();
-                String telephoneInput =   mEditTextTelephone.getText().toString();
-                String emailInput =       mEditTextEmail.getText().toString();
-                String theNameOfTheCafeInput = mEditTextTheNameOfTheCafe.getText().toString();
-                String coordinatesInput = mEditTextCoordinates.getText().toString();
-                String themeInput =       mEditTextTheme.getText().toString();
-                String detailsInput =     mEditTextDetails.getText().toString();
+        String companyInput = mEditTextCompany.getText().toString();
+        String nameSurnameInput = mEditTextName_Surname.getText().toString();
+        String positionInput = mEditTextPosition.getText().toString();
+        String telephoneInput = mEditTextTelephone.getText().toString();
+        String emailInput = mEditTextEmail.getText().toString();
+        String theNameOfTheCafeInput = mEditTextTheNameOfTheCafe.getText().toString();
+        String coordinatesInput = mEditTextCoordinates.getText().toString();
+        String themeInput = mEditTextTheme.getText().toString();
+        String detailsInput = mEditTextDetails.getText().toString();
 
 
         //Creating object for our interface
         final SpreadsheetWebService spreadsheetWebService = retrofit.create(SpreadsheetWebService.class);
-        Call<Void> completeQuestionnaireCall=spreadsheetWebService.
+        Call<Void> completeQuestionnaireCall = spreadsheetWebService.
                 completeQuestionnaire(companyInput, nameSurnameInput, positionInput,
-                        telephoneInput, emailInput,theNameOfTheCafeInput, coordinatesInput,
+                        telephoneInput, emailInput, theNameOfTheCafeInput, coordinatesInput,
                         themeInput, detailsInput);
-                        completeQuestionnaireCall.enqueue(callCallback);
-        if(callCallback!=null){
-        Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
-        startActivity(intent);}
-        else Toast.makeText(SheetForm.this, "Something is wrong...", Toast.LENGTH_LONG).show();
+        completeQuestionnaireCall.enqueue(callCallback);
+        if (callCallback != null) {
+            Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
+            startActivity(intent);
+        } else Toast.makeText(SheetForm.this, "Something is wrong...", Toast.LENGTH_LONG).show();
 
     }
 
-        private final Callback<Void> callCallback = new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+    private final Callback<Void> callCallback = new Callback<Void>() {
+        @Override
+        public void onResponse(Call<Void> call, Response<Void> response) {
 
-                Toast.makeText(SheetForm.this, "Thank you. Form send.", Toast.LENGTH_LONG).show();
+            Toast.makeText(SheetForm.this, "Thank you. Form send.", Toast.LENGTH_LONG).show();
 
-            }
+        }
 
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+        @Override
+        public void onFailure(Call<Void> call, Throwable t) {
 
-            }
+        }
 
-        };
+    };
 
 
 }
+
+
+
 
 

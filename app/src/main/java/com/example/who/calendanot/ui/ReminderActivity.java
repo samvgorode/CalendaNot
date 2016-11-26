@@ -127,7 +127,7 @@ public class ReminderActivity extends AppCompatActivity {
         mButtonFillForm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String myInput = mEditTextAfterScan.getText().toString();
+                String myInput = mEditTextFillForm.getText().toString();
                 if (myInput.matches("")) {
                     Toast.makeText(getApplicationContext(), "ENTER INTEGER VALUE", Toast.LENGTH_LONG).show();
                     return;
@@ -196,7 +196,7 @@ public class ReminderActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         } else if (currentTimeMillis() > mEventStart) {
             Toast.makeText(getApplicationContext(), "EVENT HAS ALREADY BEGUN",
-                    Toast.LENGTH_LONG).show();
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -233,7 +233,7 @@ public class ReminderActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         } else if (currentTimeMillis() > mEventStart) {
             Toast.makeText(getApplicationContext(), "EVENT HAS ALREADY BEGUN",
-                    Toast.LENGTH_LONG).show();
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -270,7 +270,7 @@ public class ReminderActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         } else if (currentTimeMillis() > mEventStart) {
             Toast.makeText(getApplicationContext(), "EVENT HAS ALREADY BEGUN",
-                    Toast.LENGTH_LONG).show();
+                    Toast.LENGTH_SHORT).show();
         }
 
 
