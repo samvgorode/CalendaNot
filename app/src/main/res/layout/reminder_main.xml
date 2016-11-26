@@ -33,6 +33,7 @@
         android:layout_above="@+id/reminderAfterCam"
         android:layout_alignParentStart="true"
         android:hint="@string/hint_enter_event_before"
+        android:imeOptions="actionDone"
         android:inputType="number" />
 
     <Button
@@ -53,6 +54,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/reminderBefore"
         android:hint="@string/hint_enter_event_after_cam"
+        android:imeOptions="actionDone"
         android:inputType="number" />
 
     <Button
@@ -73,7 +75,9 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/reminderAfterCam"
         android:hint="@string/hint_enter_event_after_cam"
+        android:imeOptions="actionDone"
         android:inputType="number" />
+
     <Button
         android:id="@+id/reminderAfterFillForm"
         style="@android:style/Widget.Holo.Button.Small"
@@ -92,6 +96,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/reminderAfterScan"
         android:hint="@string/hint_enter_event_after_cam"
+        android:imeOptions="actionDone"
         android:inputType="number" />
 
     <ListView

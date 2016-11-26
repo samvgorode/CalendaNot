@@ -71,7 +71,7 @@ public class EventActivity extends AppCompatActivity {
                 java.util.Calendar calendarFinish = java.util.Calendar.getInstance();
                 calendarFinish.setTimeInMillis(milliSecondsFinish);
 
-                eventsTitle.add("ID= " + e.id + "\nTitle - " + e.title + "\n" + "Date - " + formatter.format(calendarStart.getTime()) + "\nTime Start - " + formatter1.format(calendarStart.getTime())+"\nTime Finish - " + formatter1.format(calendarFinish.getTime()));
+                eventsTitle.add("ID= " + e.id + "\nTitle - " + e.title + "\n" + "Date - " + formatter.format(calendarStart.getTime()) + "\nTime Start - " + formatter1.format(calendarStart.getTime()) + "\nTime Finish - " + formatter1.format(calendarFinish.getTime()));
             }
         }
         final ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<>(this, R.layout.list_item, eventsTitle);
@@ -90,18 +90,32 @@ public class EventActivity extends AppCompatActivity {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String myInput = mEdittext.getText().toString();
+                final List<Event> events = mEvent.getEventsForQuery(null, null, null, getContentResolver());
+                for (Event e : events) {
+                    if (e.calendarId == getIntent().getExtras().getInt("CalendarId")) {
+                        if (myInput.matches("")) {
+                            Toast.makeText(getApplicationContext(), "EMPTY VALUE IS NOT ALLOWED HERE", Toast.LENGTH_LONG).show();
+                            return;
+                        } else {
+                            long idd = Long.parseLong(myInput);
+                            if (idd == e.id) {
+                                ContentResolver cr = getContentResolver();
+                                ContentValues values = new ContentValues();
+                                Uri deleteUri = null;
+                                deleteUri = ContentUris.withAppendedId(CalendarContract.Events.CONTENT_URI, idd);
+                                int rows = getContentResolver().delete(deleteUri, null, null);
+                                Log.d(TAG, "Rows deleted: " + rows + "  " + idd);
+                                Toast.makeText(getApplicationContext(), "DELETED EVENT ID= \n" + idd + "\nSYNC YOUR CALENDAR", Toast.LENGTH_LONG).show();
+                            } else if (idd != e.id) {
+                                Toast.makeText(getApplicationContext(), "THIS VALUE IS NOT EVENT ID", Toast.LENGTH_LONG).show();
+                                return;
+                            }
 
-                long idd = Long.parseLong(mEdittext.getText().toString());
-                Log.d(TAG, "onClick: " + idd);
-                ContentResolver cr = getContentResolver();
-                ContentValues values = new ContentValues();
-                Uri deleteUri = null;
-                deleteUri = ContentUris.withAppendedId(CalendarContract.Events.CONTENT_URI, idd);
-                int rows = getContentResolver().delete(deleteUri, null, null);
-                Log.d(TAG, "Rows deleted: " + rows + "  " + idd);
-                Toast.makeText(getApplicationContext(), "DELETED EVENT ID= \n" + idd + "\nSYNC YOUR CALENDAR",
-                        Toast.LENGTH_LONG).show();
+                        }
 
+                    }
+                }
             }
         });
     }

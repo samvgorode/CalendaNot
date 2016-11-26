@@ -1,5 +1,6 @@
 package com.example.who.calendanot.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -85,6 +86,7 @@ private Button mButtonSubmit;
 
                 sendDataToGoogleSheets();
 
+
             }
         });
     }
@@ -110,25 +112,18 @@ private Button mButtonSubmit;
                 completeQuestionnaire(companyInput, nameSurnameInput, positionInput,
                         telephoneInput, emailInput,theNameOfTheCafeInput, coordinatesInput,
                         themeInput, detailsInput);
-                        completeQuestionnaireCall.enqueue(callCallback);}
+                        completeQuestionnaireCall.enqueue(callCallback);
+        if(callCallback!=null){
+        Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
+        startActivity(intent);}
+        else Toast.makeText(SheetForm.this, "Something is wrong...", Toast.LENGTH_LONG).show();
+
+    }
 
         private final Callback<Void> callCallback = new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-//                BufferedReader reader = null;
-//                String output = "";
-//                InputStream is = response.raw().body().byteStream();
-//                try {
-//                    //Initializing buffered reader
-//                    reader = new BufferedReader(new InputStreamReader(is));
-//
-//                    //Reading the output in the string
-//                    output = reader.readLine();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//                //Displaying the output as a toast
-//                Toast.makeText(SheetForm.this, output, Toast.LENGTH_LONG).show();
+
                 Toast.makeText(SheetForm.this, "Thank you. Form send.", Toast.LENGTH_LONG).show();
 
             }

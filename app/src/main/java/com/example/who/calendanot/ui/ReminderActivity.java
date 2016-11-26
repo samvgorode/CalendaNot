@@ -83,32 +83,58 @@ public class ReminderActivity extends AppCompatActivity {
         mButtonBefore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int idd = Integer.parseInt(mEditTextBefore.getText().toString());
-                setReminder(getApplication().getContentResolver(), getIntent().getExtras().getInt("EventId"), idd);
-                Log.d(TAG, "mButtonBefore " + getIntent().getExtras().getInt("EventId"));
+                String myInput = mEditTextBefore.getText().toString();
+                if (myInput.matches("")) {
+                    Toast.makeText(getApplicationContext(), "ENTER INTEGER VALUE", Toast.LENGTH_LONG).show();
+                    return;
+                } else {
+                    int idd = Integer.parseInt(myInput);
+                    setReminder(getApplication().getContentResolver(), getIntent().getExtras().getInt("EventId"), idd);
+                }
+
             }
         });
         //camera notification set time
         mButtonAfterCam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                long minutess = Long.parseLong(mEditTextAfterCam.getText().toString());
-                alarmManagerMinAfterEventPhoto(minutess);
+                String myInput = mEditTextAfterCam.getText().toString();
+                if (myInput.matches("")) {
+                    Toast.makeText(getApplicationContext(), "ENTER INTEGER VALUE", Toast.LENGTH_LONG).show();
+                    return;
+                } else {
+                    long minutes = Long.parseLong(myInput);
+                    alarmManagerMinAfterEventPhoto(minutes);
+                }
+
             }
         });
         //Business Card Reader CRM Pro notification set time
         mButtonAfterScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                long minutes = Long.parseLong(mEditTextAfterScan.getText().toString());
-                alarmManagerMinAfterEventScan(minutes);
+                String myInput = mEditTextAfterScan.getText().toString();
+                if (myInput.matches("")) {
+                    Toast.makeText(getApplicationContext(), "ENTER INTEGER VALUE", Toast.LENGTH_LONG).show();
+                    return;
+                } else {
+                    long minutes = Long.parseLong(myInput);
+                    alarmManagerMinAfterEventScan(minutes);
+                }
+
             }
         });
         mButtonFillForm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                long minutes = Long.parseLong(mEditTextFillForm.getText().toString());
-                alarmManagerMinAfterEventFillForm(minutes);
+                String myInput = mEditTextAfterScan.getText().toString();
+                if (myInput.matches("")) {
+                    Toast.makeText(getApplicationContext(), "ENTER INTEGER VALUE", Toast.LENGTH_LONG).show();
+                    return;
+                } else {
+                    long minutes = Long.parseLong(myInput);
+                    alarmManagerMinAfterEventFillForm(minutes);
+                }
             }
         });
     }
@@ -212,7 +238,7 @@ public class ReminderActivity extends AppCompatActivity {
     }
 
     //method for starting SheetForm activity to fill form and send it to GooSheets
-    private void alarmManagerMinAfterEventFillForm(long minutes){
+    private void alarmManagerMinAfterEventFillForm(long minutes) {
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent notificationIntent = new Intent("com.example.who.calendanot.OPEN_FIL_FORM");
