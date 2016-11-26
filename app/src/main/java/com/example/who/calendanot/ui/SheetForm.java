@@ -12,11 +12,6 @@ import android.widget.Toast;
 import com.example.who.calendanot.R;
 import com.example.who.calendanot.retrifitservice.SpreadsheetWebService;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -87,15 +82,6 @@ private Button mButtonSubmit;
                     return;
                 }
 
-                        String companyInput =     mEditTextCompany.getText().toString();
-                        String nameSurnameInput = mEditTextName_Surname.getText().toString();
-                        String positionInput =    mEditTextPosition.getText().toString();
-                        String telephoneInput =   mEditTextTelephone.getText().toString();
-                        String emailInput =       mEditTextEmail.getText().toString();
-                String theNameOfTheCafeInput =    mEditTextTheNameOfTheCafe.getText().toString();
-                String coordinatesInput =         mEditTextCoordinates.getText().toString();
-                String themeInput =               mEditTextTheme.getText().toString();
-                String detailsInput =             mEditTextDetails.getText().toString();
 
                 sendDataToGoogleSheets();
 
@@ -107,56 +93,54 @@ private Button mButtonSubmit;
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://docs.google.com/forms/d/")
                 .build();
+                String companyInput =     mEditTextCompany.getText().toString();
+                String nameSurnameInput = mEditTextName_Surname.getText().toString();
+                String positionInput =    mEditTextPosition.getText().toString();
+                String telephoneInput =   mEditTextTelephone.getText().toString();
+                String emailInput =       mEditTextEmail.getText().toString();
+                String theNameOfTheCafeInput = mEditTextTheNameOfTheCafe.getText().toString();
+                String coordinatesInput = mEditTextCoordinates.getText().toString();
+                String themeInput =       mEditTextTheme.getText().toString();
+                String detailsInput =     mEditTextDetails.getText().toString();
+
+
         //Creating object for our interface
         final SpreadsheetWebService spreadsheetWebService = retrofit.create(SpreadsheetWebService.class);
-        spreadsheetWebService.completeQuestionnaire(
-                //Passing the values by getting it from editTexts
-                mEditTextCompany.getText().toString(),
-                mEditTextName_Surname.getText().toString(),
-                mEditTextPosition.getText().toString(),
-                mEditTextTelephone.getText().toString(),
-                mEditTextEmail.getText().toString(),
-                mEditTextTheNameOfTheCafe.getText().toString(),
-                mEditTextCoordinates.getText().toString(),
-                mEditTextTheme.getText().toString(),
-                mEditTextDetails.getText().toString(),
+        Call<Void> completeQuestionnaireCall=spreadsheetWebService.
+                completeQuestionnaire(companyInput, nameSurnameInput, positionInput,
+                        telephoneInput, emailInput,theNameOfTheCafeInput, coordinatesInput,
+                        themeInput, detailsInput);
+                        completeQuestionnaireCall.enqueue(callCallback);}
 
-                //Creating an anonymous callback
-                new Callback<Response>() {
-                    @Override
-                    public void onResponse(Call<Response> call, Response<Response> response) {
+        private final Callback<Void> callCallback = new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+//                BufferedReader reader = null;
+//                String output = "";
+//                InputStream is = response.raw().body().byteStream();
+//                try {
+//                    //Initializing buffered reader
+//                    reader = new BufferedReader(new InputStreamReader(is));
+//
+//                    //Reading the output in the string
+//                    output = reader.readLine();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//                //Displaying the output as a toast
+//                Toast.makeText(SheetForm.this, output, Toast.LENGTH_LONG).show();
+                Toast.makeText(SheetForm.this, "Thank you. Form send.", Toast.LENGTH_LONG).show();
 
-                        //On success we will read the server's output using bufferedreader
-                        //Creating a bufferedreader object
-                        BufferedReader reader = null;
+            }
 
-                        //An string to store output from the server
-                        String output = "";
-                        try {
-                            //Initializing buffered reader
-                            response = call.execute();
-                            InputStream is = response.raw().body().byteStream();
-                            reader = new BufferedReader(new InputStreamReader(is));
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
 
-                            //Reading the output in the string
-                            output = reader.readLine();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+            }
 
-                        //Displaying the output as a toast
-                        Toast.makeText(SheetForm.this, output, Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onFailure(Call<Response> call, Throwable t) {
-
-                    }
-
-
-                });
+        };
 
 
 }
-}
+
 
