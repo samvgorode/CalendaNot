@@ -10,11 +10,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.who.calendanot.ui.CalendarActivity">
 
+    <TextView
+        android:text="@string/your_calendars"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="135dp"
+        android:id="@+id/textView4"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="20dp"/>
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/calendars"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
+        android:layout_below="@id/textView4"
         style="@android:style/Widget.Material.Light.ListView" />
+
 </RelativeLayout>

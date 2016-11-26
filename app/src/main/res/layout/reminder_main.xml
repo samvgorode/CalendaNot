@@ -16,13 +16,21 @@
     tools:context="com.example.who.calendanot.ui.CalendarActivity">
 
 
+    <TextView
+        android:text="@string/your_reminders_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textView5"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
     <Button
         android:id="@+id/reminderBefore"
         style="@android:style/Widget.Holo.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/textView5"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
         android:text="@string/button_before_event" />
 
     <EditText
@@ -32,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/reminderAfterCam"
         android:layout_alignParentStart="true"
-        android:hint="@string/hint_enter_event_before"
+        android:hint="@string/hint"
         android:imeOptions="actionDone"
         android:inputType="number" />
 
@@ -53,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/reminderBefore"
-        android:hint="@string/hint_enter_event_after_cam"
+        android:hint="@string/hint"
         android:imeOptions="actionDone"
         android:inputType="number" />
 
@@ -74,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/reminderAfterCam"
-        android:hint="@string/hint_enter_event_after_cam"
+        android:hint="@string/hint"
         android:imeOptions="actionDone"
         android:inputType="number" />
 
@@ -95,15 +103,25 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/reminderAfterScan"
-        android:hint="@string/hint_enter_event_after_cam"
+        android:hint="@string/hint"
         android:imeOptions="actionDone"
         android:inputType="number" />
+    <TextView
+        android:text="@string/your_reminders_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/reminderAfterFillForm"
+        android:id="@+id/textView6"
+        android:layout_marginBottom="20dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <ListView
         android:id="@+id/reminders"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/reminderAfterFillForm" />
+        android:layout_below="@id/textView6" />
 
 
 </RelativeLayout>

@@ -34,14 +34,22 @@
         style="@android:style/Widget.Material.EditText" />
 
 
+    <TextView
+        android:text="@string/your_events_list"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/delete_event_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView7"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_marginBottom="20dp"/>
 
-
-
-        <ListView
+    <ListView
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:id="@+id/events"
-            android:layout_below="@id/delete_event_button"/>
+            android:layout_below="@id/textView7"/>
 
 
 </RelativeLayout>

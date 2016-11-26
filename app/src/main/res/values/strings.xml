@@ -4,7 +4,6 @@
     <string name="button_reminders">Add reminders before 60 min and 5 min and photo 15 min after</string>
     <string name="button_delete_event">delete event by id</string>
     <string name="hint_delete_event">enter event id</string>
-    <string name="hint_enter_event_before">min before event</string>
     <string name="button_before_event">add min before</string>
     <string name="hint_enter_event_after_cam">min after event</string>
     <string name="button_after_event_cam">add min after to photo</string>
@@ -23,6 +22,11 @@
     <string name="title_form2">Place of event</string>
     <string name="title_form3">Subject of the conversation</string>
     <string name="button_submit">Submit</string>
+    <string name="your_calendars">CALENDARS ON YOUR DEVICE</string>
+    <string name="your_reminders_settings">SETTINGS OF REMINDERS</string>
+    <string name="your_reminders_list">LIST OF YOUR CALENDAR REMINDERS</string>
+    <string name="your_events_list">LIST OF YOUR CALENDAR EVENTS</string>
+    <string name="hint">enter minutes here</string>
 
 
 
