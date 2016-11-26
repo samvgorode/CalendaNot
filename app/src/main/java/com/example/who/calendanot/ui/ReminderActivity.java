@@ -62,8 +62,8 @@ public class ReminderActivity extends AppCompatActivity {
         mEditTextAfterCam = (EditText) findViewById(R.id.input_minutes_after_camera);
         mButtonAfterScan = (Button) findViewById(R.id.reminderAfterScan);
         mEditTextAfterScan = (EditText) findViewById(R.id.input_minutes_after_scan);
-        mButtonFillForm = (Button) findViewById(R.id.reminderAfterScan);
-        mEditTextFillForm = (EditText) findViewById(R.id.input_minutes_after_scan);
+        mButtonFillForm = (Button) findViewById(R.id.reminderAfterFillForm);
+        mEditTextFillForm = (EditText) findViewById(R.id.input_minutes_after_FillForm);
 
 
         final List<Reminder> reminders = mReminder.getRemindersForQuery(null, null, null, getContentResolver());
@@ -239,7 +239,7 @@ public class ReminderActivity extends AppCompatActivity {
                     TimeUnit.MILLISECONDS.toMinutes(timeInMillis - System.currentTimeMillis()),
                     TimeUnit.MILLISECONDS.toSeconds(timeInMillis - System.currentTimeMillis()) -
                             TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(timeInMillis - System.currentTimeMillis())));
-            Toast.makeText(getApplicationContext(), "ADDED NOTIFICATION SCANNING AFTER " +
+            Toast.makeText(getApplicationContext(), "ADDED NOTIFICATION TO FILL FORM AFTER " +
                             (timeLeft) + " FROM NOW",
                     Toast.LENGTH_LONG).show();
         } else if (currentTimeMillis() > mEventStart) {

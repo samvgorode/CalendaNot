@@ -10,6 +10,21 @@
     <string name="button_after_event_cam">add min after to photo</string>
     <string name="hint_enter_event_after_scan">add min after to scan</string>
     <string name="hint_enter_event_after_fill_form">add min after to fill form</string>
+    <string name="question_input_hint1">add Company name</string>
+    <string name="question_input_hint2">add Name and Surname of partner</string>
+    <string name="question_input_hint3">add position of partner</string>
+    <string name="question_input_hint4">add telephone of partner</string>
+    <string name="question_input_hint5">add email of partner</string>
+    <string name="question_input_hint6">add the name of the cafe or restaurant</string>
+    <string name="question_input_hint7">add coordinates</string>
+    <string name="question_input_hint8">add theme of event</string>
+    <string name="question_input_hint9">add details of event</string>
+    <string name="title_form1">Contacts</string>
+    <string name="title_form2">Place of event</string>
+    <string name="title_form3">Subject of the conversation</string>
+    <string name="button_submit">Submit</string>
+
+
 
 
 </resources>

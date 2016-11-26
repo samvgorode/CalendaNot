@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:support="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".ui.SheetForm">
+
+
+    <TextView
+        android:text="@string/title_form1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textAppearance="@android:style/TextAppearance.Material.DialogWindowTitle" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/company"
+        android:hint="@string/question_input_hint1"
+        android:textAppearance="@android:style/TextAppearance.Material.Body1"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/name_Surname"
+        android:hint="@string/question_input_hint2"
+        android:textAppearance="@android:style/TextAppearance.Material.Body1"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text|textPersonName"
+        android:ems="10"
+        android:id="@+id/position"
+        android:hint="@string/question_input_hint3"
+        android:textAppearance="@android:style/TextAppearance.Material.Body1"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName|phone"
+        android:ems="10"
+        android:id="@+id/telephone"
+        android:hint="@string/question_input_hint4"
+        android:textAppearance="@android:style/TextAppearance.Material.Body1"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textWebEmailAddress"
+        android:ems="10"
+        android:id="@+id/email"
+        android:hint="@string/question_input_hint5"
+        android:textAppearance="@android:style/TextAppearance.Material.Body1"/>
+
+    <TextView
+        android:text="@string/title_form2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textAppearance="@android:style/TextAppearance.Material.DialogWindowTitle" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/the_name_of_the_cafe_restaurant"
+        android:hint="@string/question_input_hint6"
+        android:textAppearance="@android:style/TextAppearance.Material.Body1" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/coordinates"
+        android:hint="@string/question_input_hint7"
+        android:textAppearance="@android:style/TextAppearance.Material.Body1"/>
+
+    <TextView
+        android:text="@string/title_form3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:textAppearance="@android:style/TextAppearance.Material.DialogWindowTitle" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/theme"
+        android:hint="@string/question_input_hint8"
+        android:textAppearance="@android:style/TextAppearance.Material.Body1"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/details"
+        android:hint="@string/question_input_hint9"
+        android:textAppearance="@android:style/TextAppearance.Material.Body1" />
+
+    <Button
+        android:text="@string/button_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/my_submit_button"
+        style="@android:style/Widget.Material.Light.Button.Small" />
+</LinearLayout>
